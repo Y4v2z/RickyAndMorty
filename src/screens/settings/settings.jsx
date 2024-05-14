@@ -4,13 +4,12 @@ import {View, Text, StyleSheet} from 'react-native';
 import {screensStyle} from '../../styles/screensStyle';
 
 // create a component
-const Charakters = () => {
+const Settings = () => {
   return (
     <View style={screensStyle.container}>
-      <Text>Charakters</Text>
+      <Text>Settings</Text>
     </View>
   );
 };
 
-//make this component available to the app
-export default Charakters;
+export default Settings;

@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import characterReducer from './characterReducer';
 
 const rootReducer = combineReducers({
-  charakter: characterReducer,
+  characters: characterReducer,
 });
 
 export default rootReducer;

@@ -11,9 +11,10 @@ export const getCharacterList = params => {
     dispatch({type: PENDİNG_CAHARAKTERS});
     try {
       const response = await getRequest(CHARACTERS_URL);
+      // console.log(response.data.results);
       dispatch({
         type: FETCH_CAHARAKTERS,
-        payload: response.data.data,
+        payload: response.data.results,
       });
     } catch (error) {
       dispatch({type: CAHARAKTERS_REJECT, error: error});

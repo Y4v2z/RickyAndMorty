@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Charakters from '../screens/characters/characters';
 import Episodes from '../screens/episodes/episedes';
@@ -28,7 +27,7 @@ export default function TabNavigator() {
         headerTitleAlign: 'center',
         headerStyle: tabBarStyle.headerStyle,
         tabBarStyle: tabBarStyle.tabBarStyle,
-        tabBarActiveTintColor: Colors.BLACK,
+        tabBarActiveTintColor: Colors.PRIMARY,
       })}>
       <Tab.Screen name={CHARAKTERS} component={Charakters} />
       <Tab.Screen name={EPİSODES} component={Episodes} />

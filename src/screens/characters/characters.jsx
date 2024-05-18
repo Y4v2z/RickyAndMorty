@@ -10,7 +10,7 @@ import CharacterCard from '../../components/characters/characterCard';
 // create a component
 const Characters = () => {
   const dispatch = useDispatch();
-  const {charakterList, pending} = useSelector(state => state.characters);
+  const {characterList, pending} = useSelector(state => state.characters);
   useEffect(() => {
     dispatch(getCharacterList());
   }, []);
@@ -21,7 +21,7 @@ const Characters = () => {
         <Spinner />
       ) : (
         <FlatList
-          data={charakterList}
+          data={characterList}
           renderItem={({item}) => <CharacterCard item={item} />}
         />
       )}

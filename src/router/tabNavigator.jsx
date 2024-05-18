@@ -8,6 +8,7 @@ import Colors from '../theme/color';
 import {tabBarStyle} from '../styles/tabBarStyle';
 import {CHARACTERS, EPİSODES, LOCATIONS, SETTINGS} from '../utils/routes';
 import TabIcon from '../components/icons/tabIcon';
+import Characters from '../screens/characters/characters';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ export default function TabNavigator() {
         tabBarStyle: tabBarStyle.tabBarStyle,
         tabBarActiveTintColor: Colors.PRIMARY,
       })}>
-      <Tab.Screen name={CHARACTERS} component={Charakters} />
+      <Tab.Screen name={CHARACTERS} component={Characters} />
       <Tab.Screen name={EPİSODES} component={Episodes} />
       <Tab.Screen name={LOCATIONS} component={Locations} />
       <Tab.Screen name={SETTINGS} component={Settings} />

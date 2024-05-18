@@ -7,11 +7,11 @@ import {
   PresentionChart,
   Setting4,
 } from 'iconsax-react-native';
-import {CHARAKTERS, EPİSODES, LOCATIONS, SETTINGS} from '../../utils/routes';
+import {CHARACTERS, EPİSODES, LOCATIONS, SETTINGS} from '../../utils/routes';
 
 // create a component
 const TabIcon = ({name, focused, color, size}) => {
-  if (name == CHARAKTERS)
+  if (name == CHARACTERS)
     return (
       <View>
         <Designtools

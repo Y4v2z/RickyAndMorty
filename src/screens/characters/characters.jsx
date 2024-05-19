@@ -3,17 +3,29 @@ import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {screensStyle} from '../../styles/screensStyle';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCharacterList} from '../../store/actions/characterActions';
+import {
+  changeParams,
+  getCharacterList,
+  loadMoreCharecters,
+} from '../../store/actions/characterActions';
 import Spinner from '../../components/uı/spinner';
 import CharacterCard from '../../components/characters/characterCard';
 
 // create a component
 const Characters = () => {
   const dispatch = useDispatch();
-  const {characterList, pending} = useSelector(state => state.characters);
+  const {characterList, pending, params} = useSelector(
+    state => state.characters,
+  );
   useEffect(() => {
-    dispatch(getCharacterList());
+    dispatch(getCharacterList(params));
   }, []);
+  const handleMoreLoad = () => {
+    let page = params.page + 1;
+    dispatch(changeParams({page: page}));
+    dispatch(loadMoreCharecters(params));
+    // console.log(page);
+  };
 
   return (
     <View style={screensStyle.container}>
@@ -22,12 +34,14 @@ const Characters = () => {
       ) : (
         <FlatList
           data={characterList}
-          renderItem={({item}) => <CharacterCard item={item} />}
+          renderItem={({item}) => <CharacterCard key={item.id} item={item} />}
+          onEndReachedThreshold={0.5}
+          onEndReached={handleMoreLoad}
+          ListFooterComponent={<Spinner />}
         />
       )}
     </View>
   );
 };
 
-//make this component available to the app
 export default Characters;

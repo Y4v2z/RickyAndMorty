@@ -57,4 +57,31 @@ export const characterDetailStyle = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10,
   },
+  detailPageeLeft: {
+    backgroundColor: '#e5ded1',
+    padding: 10,
+    flex: 1,
+    alignItems: 'center',
+  },
+  detailPageRight: {
+    backgroundColor: '#e5ded1',
+    padding: 10,
+    marginLeft: 10,
+    flex: 2,
+    alignItems: 'center',
+  },
+  whereAboutRight: {
+    backgroundColor: '#e5ded1',
+    padding: 10,
+    marginLeft: 10,
+    flex: 2,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  detailPageeRows: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 5,
+  },
 });

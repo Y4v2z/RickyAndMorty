@@ -5,15 +5,22 @@ import {
   SINGLE_CAHARAKTERS_REJECT,
   FETCH_SINGLE_CAHARAKTERS,
   PENDİNG_SINGLE_CAHARAKTER,
+  RESET_DATA,
+  CHANGE_PARAMS,
+  LOAD_MORE_DATA,
 } from '../types/characterTypes';
 
 const initialState = {
   characterList: [],
   singleCharacter: {},
-  singleCharacterPending: false,
+  singleCharacterPending: true,
   pending: false,
   error: null,
   singleCharacterError: null,
+  params: {
+    page: 1,
+  },
+  // üst satır çalışmadı
 };
 const characterReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,6 +29,11 @@ const characterReducer = (state = initialState, action) => {
         ...state,
         characterList: action.payload,
         pending: false,
+      };
+    case LOAD_MORE_DATA:
+      return {
+        ...state,
+        characterList: [...state.characterList, ...action.payload],
       };
     case PENDİNG_CAHARAKTERS:
       return {
@@ -48,7 +60,20 @@ const characterReducer = (state = initialState, action) => {
     case SINGLE_CAHARAKTERS_REJECT:
       return {
         ...state,
+        PENDİNG_SINGLE_CAHARAKTER: false,
         singleCharacterError: action.error,
+      };
+    case RESET_DATA:
+      return {
+        ...state,
+        PENDİNG_SINGLE_CAHARAKTER: false,
+        singleCharacterError: null,
+        singleCharacter: {},
+      };
+    case CHANGE_PARAMS:
+      return {
+        ...state,
+        params: action.params,
       };
 
     default:

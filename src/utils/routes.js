@@ -9,6 +9,8 @@ const LOCATIONS = 'Locations';
 const SETTINGS = 'Settings';
 const TABNAVIGATOR = 'TabNavigator';
 const CHARAKTERDETAIL = 'Character Detail';
+const FILTERCHARACTERS = 'Character Filters';
+const SEARCHCHARACTERS = 'Character Search';
 export {
   CHARACTERS,
   EPİSODES,
@@ -16,4 +18,6 @@ export {
   SETTINGS,
   TABNAVIGATOR,
   CHARAKTERDETAIL,
+  FILTERCHARACTERS,
+  SEARCHCHARACTERS,
 };

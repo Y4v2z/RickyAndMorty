@@ -11,6 +11,7 @@ import {CHARAKTERDETAIL} from '../../utils/routes';
 const CharacterCard = ({item}) => {
   //   console.log(JSON.stringify(item));
   const navigation = useNavigation();
+
   return (
     <Pressable
       onPress={() =>

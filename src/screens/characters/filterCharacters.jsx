@@ -11,26 +11,20 @@ import {screensStyle} from '../../styles/screensStyle';
 import CustomButton from '../../components/uı/customButton';
 import Colors from '../../theme/color';
 import {genders, status} from '../../utils/constant';
-import {useDispatch} from 'react-redux';
-import {getCharacterList} from '../../store/actions/characterActions';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeParams} from '../../store/actions/characterActions';
 import {useNavigation} from '@react-navigation/native';
 
 // create a component
 const FilterCharacters = () => {
-  const [filterGender, setFilterGender] = useState(null);
-  const [filterStatus, setFilterStatus] = useState(null);
+  const {params} = useSelector(state => state.characters);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const filterCharacters = () => {
-    const params = {
-      gender: filterGender,
-      status: filterStatus,
-    };
-    dispatch(getCharacterList(params));
     navigation.goBack();
   };
   const clearFilters = () => {
-    dispatch(getCharacterList());
+    dispatch(changeParams({gender: null, status: null}));
     navigation.goBack();
   };
   return (
@@ -49,11 +43,11 @@ const FilterCharacters = () => {
           <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
             {genders.map(item => (
               <TouchableOpacity
-                onPress={() => setFilterGender(item.value)}
+                onPress={() => dispatch(changeParams({gender: item.value}))}
                 key={item.id}
                 style={{
                   backgroundColor:
-                    filterGender == item.value ? Colors.GREEN : Colors.BROWN,
+                    params.gender == item.value ? Colors.GREEN : Colors.BROWN,
                   padding: 10,
                   margin: 3,
                   borderRadius: 5,
@@ -77,11 +71,11 @@ const FilterCharacters = () => {
           <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
             {status.map(item => (
               <TouchableOpacity
-                onPress={() => setFilterStatus(item.value)}
+                onPress={() => dispatch(changeParams({status: item.value}))}
                 key={item.id}
                 style={{
                   backgroundColor:
-                    filterStatus == item.value ? Colors.GREEN : Colors.BROWN,
+                    params.status == item.value ? Colors.GREEN : Colors.BROWN,
                   padding: 10,
                   margin: 3,
                   borderRadius: 5,

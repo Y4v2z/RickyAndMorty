@@ -19,6 +19,9 @@ const initialState = {
   singleCharacterError: null,
   params: {
     page: 1,
+    status: null,
+    gender: null,
+    name: null,
   },
   // üst satır çalışmadı
 };
@@ -73,7 +76,10 @@ const characterReducer = (state = initialState, action) => {
     case CHANGE_PARAMS:
       return {
         ...state,
-        params: action.params,
+        params: {
+          ...state.params,
+          ...action.params,
+        },
       };
 
     default:

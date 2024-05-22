@@ -19,7 +19,7 @@ const Characters = () => {
   );
   useEffect(() => {
     dispatch(getCharacterList(params));
-  }, []);
+  }, [params]);
   const handleMoreLoad = () => {
     let page = params.page + 1;
     dispatch(changeParams({page: page}));
